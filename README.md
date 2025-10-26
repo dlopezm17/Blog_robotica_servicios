@@ -38,3 +38,42 @@ in a proper speed
 ## Video
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/Eao6hYEUC7JGoCqDS3di5tQBdBGUsBMy54-QkckbEuhGIQ?e=QIcw61&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
       
+#
+#
+# P2: Rescue Drone
+This practice goal was to make a drone able to detect people in the sea. In orther to archive that, we are proporcionate with the altitude and latitude of both the drone landing port and the stimate localization of the survivors.
+
+The code has been implemented as a FSM (finite state machine) whith three states, `START`, `FIND_PEOPLE` and `RETURN`
+## Start mode
+In the start mode, the drone will firstly take off from the initial platform to a middle hight, then fly to the stimate position of the survivors.
+
+The hight at which it will start going to the survivors position is smaller than the one that it will use to fly, because in the route to there it has plenty of time to reach the desire altitude
+
+Ones the drone has reached the survivors stimate position, it will go to the Search mode
+
+## Search mode
+In this mode, the drone goal is to find every single person in the area.
+
+As the drone can't know the size of the area it must search in, it will start at the stimate possition and move tracing a square spiral, so it will look for the people in a surface whose size is constantly increasing. This spiral is divided in small squares, in which the drone will look for the people.
+
+### Preople detection
+To be able to detect the people, the drone uses a facial detection function, but it had some problems.
+- Oringinaly, the facial detection gave a lot of false positives in the sea surfice, so to solve it I use a HSV blue filter so it avoids looking where ther is only water.
+- If the face was not aling with the camera or up-side-down, it will not detect it, so I turn the image in steps of 45º to see it from every posible direction.
+- Ones the other solutions were implemented, the algorithm maked the execution realy slow, so it set specific points to use it, the middle of the spiral squares.
+Ones it has found a face, it must check if its a new face or not, to avoid counting each person multiple times, so I transform from the coordenades in the image to the ones of the world, so it can compare them with the ones of the survivors previously founded. If it was a new face, the localization will be store.
+
+## Return mode
+The drone dosn't know how much people there is, so it will keep searching until it runs out of battery.
+
+To simulate the battery I use a timer. Ones a specific time theshold is surpased, it will detect that the drone battery is low and it will change to return mode
+In this mode it will fly to the landing port and, ones it has stop flying, it will send the localization of the survivors. 
+
+## Other ideas
+
+Initialy, the idea was to have the drone flying low so it will only see each person ones. This was to be able to send the current drone localization as the survivor one, what its much easier than transforming the camera coordenades to the map ones. The problem was that some of the survivors where so close to the edges of the squares in which the drone looks that if it's too close it won't see them but if it's further away they will be seen twice. At the end the change was very positive as it let me fly in a higher altitude, so it will spend less time to find everyone.
+
+## Video
+To send this information, it firstly needs to transform from its map coordenades to UTM so they can be used by the rescatists.
+
+## 
