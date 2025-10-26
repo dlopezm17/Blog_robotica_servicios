@@ -73,7 +73,7 @@ In this mode it will fly to the landing port and, ones it has stop flying, it wi
 
 Initialy, the idea was to have the drone flying low so it will only see each person ones. This was to be able to send the current drone localization as the survivor one, what its much easier than transforming the camera coordenades to the map ones. The problem was that some of the survivors where so close to the edges of the squares in which the drone looks that if it's too close it won't see them but if it's further away they will be seen twice. At the end the change was very positive as it let me fly in a higher altitude, so it will spend less time to find everyone.
 
-## Video
 To send this information, it firstly needs to transform from its map coordenades to UTM so they can be used by the rescatists.
 
-## 
+## Video
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/EZYS01OeoN1FqbE2qOj_DPYBulyD2DIiBCMlAl5fn8z-JQ?e=fKlhxY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
