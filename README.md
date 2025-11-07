@@ -77,3 +77,30 @@ To send this information, it firstly needs to transform from its map coordenades
 
 ## Video
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/EZYS01OeoN1FqbE2qOj_DPYBulyD2DIiBCMlAl5fn8z-JQ?e=fKlhxY&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+
+#
+#
+# P3: Autoparking
+
+In this exercise the goal was to make a car park by itserve. To do that I used a FSM. The problem consisted in a set of objetives: Aligning with the road, finding the paking space and parking.
+
+## Aligning with the road
+In orther to be able to park the car must be facing the same direction as the road. To do so I fistly must know what the direction fo the road is. That was obtained by calculating the main line on the road and changing the angle between the car and the line to world coordenades. With that the car can know in every moment if is facing the right direction.
+
+When the direction is kown, I check if the distance between the car an the paked ones is too big or small, and move the car if it must be changed.
+
+## Finding a parking space
+Ones the car is able to move in the road direction, it must find were to park. If the front or back laser does not detect anything, the place has been found, but if not is a bit more complicated. The car moves forward until the middle laser detects nothing. Then it checks the first non infinite distances at both sides if the middle and calculates the distances between them. The laser gives the distance between itselve and the point, but if it is multiply bu the sin of the angle we obtain the distance to the middle, and with that the distance between the front of one car and the back of the other.
+
+## Parking
+To park the car must be well position. To check that, because the middle right laser distance is infinite, the car moves forward until is not. Then, it keeps moving until one of the right lasers facing back, in this case the one with 65º to the middle, does also not detect. I fistly check the middle one because if not it may have some misdetections.
+
+Then I turn the weels all to the right and go back until the diference between the car yaw and the road one is bigger than 40º.
+
+Next it turns the weels to the left and keeps going back until is aligned with the road again.
+
+Lastly it checks the distances to both the front and the back car and moves to let some space between it and those cars
+
+## Video
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/EaaYYXFVgt9LvWqjP0SoBM8BGgye5NkRmYIGEUhy6bjd3Q?e=zPU22G&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
