@@ -104,3 +104,39 @@ Lastly it checks the distances to both the front and the back car and moves to l
 
 ## Video
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/EaaYYXFVgt9LvWqjP0SoBM8BGgye5NkRmYIGEUhy6bjd3Q?e=zPU22G&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+#
+#
+# P3: Logistic
+
+In this exercise the goal was to make a movile robot capable of moving shelfs inside a warehouse. I was divided in three dificulty levels.
+
+## Level 1
+
+In the first level we had an holonomic robot. Firstly, I increase the walls of the map to be able to consider the robot a point as done in the first exercise and then I made the functions that changed from the world coordenades to the map ones and vice versa.
+
+Then I started to use the ompl library to calculate the route. As the robot could be consider as a point, to check if it was a valid position I only checked if the middle point was inside a wall. TO plan I've used the BITstar as it game me better results and the simple setup to create the problem instace, as it led me simplify the routes.
+
+After it was finishd, to make it able to move I just check if the angle difference between the desire one for the route and the yaw was bigger than a little threshold. If so it turned until if was facing that direction, otherwise i will go straigt to the goal.
+
+In this version, as I wasn't taking into consideration the shelf geometry, I don't make the robot pick it up.
+
+## Level 2
+
+In the second level I had to check the geometry. With the level 1 code as a base, I removed the walls increase and I created a proper function to check if the robot was in a possible position. It was done by creating a area the side of the robot, or the shelf one, turning it to the yaw angle and then chaching if inside it there were walls.
+
+Also, as now I was moving the shelves, I had to modify the map. When the robot picks up the shelf, it draw a white rectangle in the shelf position. It was usefull to avoid having the shelf coliding with itselve, and making the planner unable to find a route.
+After, when the robot was in the position it wanted to leave the shelf, I added four little squares in the shelf legs positions, do it will avoid them when goint for the next one.
+
+## Level 3
+
+In the final level, the robot changed to an ackermann one. To make it work firstly I had to change the function to check the position, as this new robot has a diferent geometry.
+
+After that I change the state to `ReedsSheppStateSpace`, as it led me add the turning radius to the planner.
+
+To finish I had to change the was the robot moved. To do so I check the angle as in the fist one but, insted of just turning, I check if is bigger or smaller than 90º, to move in one direction or another and avoid doing big circular trayectories. I have also inccreased the angular speed it has, as it isn't as effective as the holonomic one at turning arround.
+
+## Video
+
+
+
