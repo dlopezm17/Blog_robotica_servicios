@@ -139,6 +139,27 @@ To finish I had to change the was the robot moved. To do so I check the angle as
 ## Video
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/EZMzczZ-oKlPsrKFmOJ3vZcBhvUjW_8--uFHrvnGJpTOMw?e=uxMmj5&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
+#
+#
+# P5: Laser Mapping
+
+In this exercise the goal was to map a room using the data from the laser.
+
+To do so firstly I create an int matrix with all fill with int(255/2), as it is the middle value, so it have the most uncertanty.
+
+In order to fill it I check the data from the laser. Knowing the distance read and the angle, I calcualte the line that the alser was in and tange the value of all of it. In the cells between the laser measurement and the robot, I will increase the value by 255/15, as it porbably doesn't have an obstacle and, in the last point, unless is higher than the max value the laser is able to read, I will decrease it by 255/15 * 3, as is better to think that there is a wall and aboid an empty place than to think that there is not and crash.
+
+To be able to map everything the robot must move, so I use the BSA algorithm to find the route to the closest cell with a velue similar to 255/2. To do so firstly I increase the walls size in the map, to avoid the route being too close to a wall.
+
+While moving to there, the robot will map on some iterations, because by not mapping in all the observations can be independent.
+
+As the odometry is not perfect, while moving the robot is constantly checking if the laser detects something too close, as it may want to be to a position that belongs to a wall.
+
+As we must try with diferent functions that have diferent errors, I have use the constant`ODOMETRY` to store which function I'm using in the moment.
+
+## Video:
+(Using `HAL.getodom`)
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQAi81Y8UeF9QrqJ0VMg4uiMAX6nsm-vokMwy6ITRvTuEmI?e=EDFMP6&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 
 
