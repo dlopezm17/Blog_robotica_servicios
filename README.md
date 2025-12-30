@@ -161,5 +161,19 @@ As we must try with diferent functions that have diferent errors, I have use the
 (Using `HAL.getodom`)
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQAi81Y8UeF9QrqJ0VMg4uiMAX6nsm-vokMwy6ITRvTuEmI?e=EDFMP6&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
+#
+#
+# P6: robot que se autolocaliza con balizas visuales
+
+In this exercise the goal was to localize a robot using visual tags.
+
+Firstly, I calculate the roobt's odometry. I did it by obtaing the diference between the previous position and the current one. That diference was addede to the position the robot think it was to make it change it's thought position as the real one. Its main porpouse is to adjust it's position when it is not seen any tag.
+
+Then, to use the tags to know the position I used the example code in Unibotics to read the tags and obtain its bounding box. The readed number was use to know which tag the robot had seen and check where the tag was in the world. The corners of the bounding box served other pospuse. Using `cv.solvePnp` I could obtain both the position and the rotation of the tag with regard to the robot's camera. Knowing both positions I could calculate the position of the robot in the world. When the tag was too far away from the robot, that position wasn't precise at all, so I ignore those tags. Also, the robot could see two tags at the same time, so the robot will take the aberage between the measuremets as its position.
+
+With all that done, the only problem was to move the robot to make it see the tag. For that pospuse I used a simple bump and go, using the laser data to know if is close to a wall and, if so, turn a random amount and keep moving.
+
+## Video:
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQCcjjpxslSlQ5U-pJSo5gD1AVJA_2lb6gfcQmt4AGSF0iY?e=SDleHi&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 
