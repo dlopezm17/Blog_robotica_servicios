@@ -177,3 +177,14 @@ With all that done, the only problem was to move the robot to make it see the ta
 https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQCcjjpxslSlQ5U-pJSo5gD1AVJA_2lb6gfcQmt4AGSF0iY?e=SDleHi&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 
+# Reentrega P5
+
+In this new versions there are two main improvements.
+
+Firstly, the map now is filled by real probebilitie, as I'm using the Bayes rule to calculate the ocupation probability of each cell.
+Secondly, now the map is only updated if the new data is independent from the last one. That is enshured by checking if the ne position difered in 1 m or 1 rad from the last value.
+
+# Reentrega P6
+
+In this new version the position is only calculated using the bigest April tag seen instead of the average of all the tags in the image.
+
