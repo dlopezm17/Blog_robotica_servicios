@@ -184,7 +184,13 @@ In this new versions there are two main improvements.
 Firstly, the map now is filled by real probebilitie, as I'm using the Bayes rule to calculate the ocupation probability of each cell.
 Secondly, now the map is only updated if the new data is independent from the last one. That is enshured by checking if the ne position difered in 1 m or 1 rad from the last value.
 
+## Video
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQBdmswka32ITqCUU8wDUDt7AVAVQ6BKQKCzkY569ZzTUQA?e=ZgdDbf&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
 # Reentrega P6
 
 In this new version the position is only calculated using the bigest April tag seen instead of the average of all the tags in the image.
+
+## Video
+https://urjc-my.sharepoint.com/:v:/g/personal/d_lopezm_2022_alumnos_urjc_es/IQCc7_6WHuPBRocCW9UMeUJyAYTHCHrCQeZzovWJSWl4Fmw?e=Kl9eg4&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
